@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+{%block content%}
+    <h1>Editar Post</h1>
+    <form action="" method="post" novalidate>
+        <p>
+            <label for="name">Escrito Por:</label><br>
+            <input id="name" maxlength="64" minlength="0" name="name" size="32" type="text" value="{{ current_user.username }}" disabled>
+        </p>
+        {{ form.hidden_tag() }}
+        <p class="form-body">
+          {{ form.body.label }}<br />
+          {{ form.body(size=32) }} {% for error in form.body.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+      </form>
+{% endblock %}
