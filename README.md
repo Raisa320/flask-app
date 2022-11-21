@@ -63,4 +63,18 @@ flask run
 or
 py run.py
 ```
+- Utilizar la implementación JSON que envia posteos
 
+Primero levantar el app
+
+```bash
+flask run 
+or
+py run.py
+```
+
+Luego en otra terminal del (env) hacer la peticion: (reemplazar  example@gmail.com:123456 con un correo y contraseña existente en tu base de datos)
+
+```bash
+http --auth example@gmail.com:123456 --json POST http://127.0.0.1:5000/post/postJson/ "body=post1"
+```
