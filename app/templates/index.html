@@ -21,14 +21,14 @@
         <ul class="posts">
             <li class="post">
                 <div>
-                    <a href="{{url_for('user', username=post.author.username)}}">
+                    <a href="{{url_for('user.user', username=post.author.username)}}">
                         <img class ="img-post" src="{{post.author.gravatar(size=40)}}" />
                     </a>
                 </div>
                 <div class="post-card">
                     <div class="post-info">
                         <div class="post-author">
-                            <a href="{{url_for('user', username=post.author.username)}}">
+                            <a href="{{url_for('user.user', username=post.author.username)}}">
                             {{ post.author.username }}
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                         </div>
                         {% if current_user.username==post.author.username %}
                             <div class="post-date">
-                                <a href="{{ url_for('editar_post',id=post.id ) }}" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                <a href="{{ url_for('post.editar_post',id=post.id ) }}" class="btn btn-primary" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                                     Editar
                                 </a>
                             </div>

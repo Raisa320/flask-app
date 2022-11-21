@@ -15,11 +15,15 @@ db=SQLAlchemy(app)
 migrate=Migrate(app,db)
 moment = Moment(app)
 login=LoginManager(app)
-login.login_view='login'
+login.login_view='index.login'
 login.login_message='Por favor inicie sesión para acceder a esta página.'
-from app import routes
+from .routes import post_scope,error_scope,index_scope,user_scope
 from app.models import User,Posts,Role
 
+app.register_blueprint(error_scope,url_prefix="/")
+app.register_blueprint(index_scope,url_prefix="/")
+app.register_blueprint(user_scope,url_prefix="/user")
+app.register_blueprint(post_scope,url_prefix="/post")
 #IMPORTA A LA SHEL AUTOMATICAMENTE LOS MODELOS
 @app.shell_context_processor
 def make_shell_context():
