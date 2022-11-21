@@ -6,7 +6,7 @@ from flask_login import LoginManager
 from flask_moment import Moment
 #CONFIGURACION DE LA CARPETAS DE TEMPLATES
 #app = Flask(__name__, static_folder=Config.STATIC_FOLDER, template_folder=Config.TEMPLATE_FOLDER)
-
+from flask_httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
 
@@ -17,6 +17,9 @@ moment = Moment(app)
 login=LoginManager(app)
 login.login_view='index.login'
 login.login_message='Por favor inicie sesión para acceder a esta página.'
+#PARA QUE LEA PETICIONES JSON
+auth=HTTPBasicAuth()
+
 from .routes import post_scope,error_scope,index_scope,user_scope
 from app.models import User,Posts,Role
 
