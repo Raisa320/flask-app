@@ -1,3 +1,4 @@
+from datetime import datetime
 from urllib.parse import urlparse
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
@@ -24,6 +25,12 @@ def index():
         return redirect(url_for('index.index'))
     posts = Posts.query.order_by(Posts.timestamp.desc()).all()
     return render_template("index.html",title="Home" ,form = form, posts = posts, WRITE = Permission.WRITE)
+
+@index_scope.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 @index_scope.route('/login',methods=['GET','POST'])
 def login():
