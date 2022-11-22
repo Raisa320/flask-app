@@ -78,3 +78,10 @@ Luego en otra terminal del (env) hacer la peticion: (reemplazar  example@gmail.c
 ```bash
 http --auth example@gmail.com:123456 --json POST http://127.0.0.1:5000/post/postJson/ "body=post1"
 ```
+## Running Tests
+
+Para ejecutar pruebas, ejecute el siguiente comando
+
+```bash
+  py test.py
+```
